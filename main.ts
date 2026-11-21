@@ -10,7 +10,11 @@ const poem = [
   "and both of them free.",
 ].join("\n");
 
-const outputDir = process.env.MAKEFUN_OUTPUT_DIR ?? "./output";
-mkdirSync(outputDir, { recursive: true });
-writeFileSync(join(outputDir, "entry.txt"), poem, "utf8");
+function writeEntry(text: string): void {
+  const outputDir = process.env.MAKEFUN_OUTPUT_DIR ?? "./output";
+  mkdirSync(outputDir, { recursive: true });
+  writeFileSync(join(outputDir, "entry.txt"), text, "utf8");
+}
+
+writeEntry(poem);
 console.log(poem);
